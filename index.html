@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPDATE METHODS BY BX</title>
     <!-- POWER BY TEAM BX 1 -->
-    <script src='//niphaumeenses.net/vignette.min.js' data-zone='9546535' data-sdk='show_9546535'></script>
-
+   <script src="//libtl.com/sdk.js" data-zone="9546535" data-sdk="show_9546535"></script> <!-- Rewarded Interstitial -->
+  <script src="//libtl.com/sdk.js" data-zone="9546537" data-sdk="show_9546537"></script> <!-- Rewarded Popup -->
+  <script src="//libtl.com/sdk.js" data-zone="9546538" data-sdk="show_9546538"></script> <!-- In-App Interstitial -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -282,7 +283,44 @@
             }
         }
         
-        
+         function showRewardedInterstitial() {
+      if (typeof show_9546535 !== 'function') return alert("Rewarded Interstitial not ready.");
+      show_9546535().then(() => {
+        balance += 1;
+        updateDisplay();
+        alert("✅ Rewarded Interstitial Ad watched. You earned 1 TK!");
+      });
+    }
+
+    function showRewardedPopup() {
+      if (typeof show_9546537 !== 'function') return alert("Rewarded Popup not ready.");
+      show_9546537().then(() => {
+        balance += 1;
+        updateDisplay();
+        alert("✅ Rewarded Popup Ad watched. You earned 1 TK!");
+      });
+    }
+
+    // Optional: Automatically show In-App Interstitial every 30 seconds
+    function showInAppAds() {
+      if (typeof show_9546538 === 'function') {
+        show_9546538({
+          type: 'inApp',
+          inAppSettings: {
+            frequency: 2,
+            capping: 0.1,
+            interval: 30,
+            timeout: 5,
+            everyPage: false
+          }
+        });
+      }
+    }
+    setInterval(showInAppAds, 30000); // Optional auto ad
+  </script>
+</body>
+</html>
+
         
         
         function updateBalance() {
